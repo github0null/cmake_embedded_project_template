@@ -42,4 +42,3 @@ function(output_binary_files target_name)
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         VERBATIM)
 endfunction()
-
