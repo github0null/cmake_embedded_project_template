@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 
 # Set up compiler and mcu arch 
 set(COMPILER_NAME "arm-none-eabi")
-set(MCU_ARCH_NAME "cortex_m3")
+set(MCU_ARCH_NAME "cortex_m7")
 #set(MCU_MFPU_TYPE "sp") # options: 'sp', 'dp', 'none', 'default'
 #set(TOOLCHAIN_DIR "D:/Keil/ARM/ARMCC/bin") # toolchain root folder for armcc
 
@@ -19,3 +19,4 @@ project(${PRJ_NAME}
 
 # Build test project
 #add_subdirectory(test/armcc_test)
+#add_subdirectory(test/gcc_test)
