@@ -2,9 +2,6 @@
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR cortex-m4)
 
-set(MCU_ARCH "cortex_m4")
-set(MCU_TOOLCHAIN "armcc")
-
 if("${MCU_MFPU_TYPE}" STREQUAL "none")
     set(MCPU_FLAGS "--cpu Cortex-M4 --fpu=SoftVFP")
 elseif("${MCU_MFPU_TYPE}" STREQUAL "sp")

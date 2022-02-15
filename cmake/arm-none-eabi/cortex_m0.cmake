@@ -2,9 +2,6 @@
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR cortex-m0)
 
-set(MCU_ARCH "cortex_m0")
-set(MCU_TOOLCHAIN "gnu")
-
 set(MCPU_FLAGS "-mthumb -mcpu=cortex-m0")
 set(VFP_FLAGS "")
 set(SPEC_FLAGS "--specs=nano.specs --specs=nosys.specs")
