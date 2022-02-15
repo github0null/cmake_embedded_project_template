@@ -8,8 +8,9 @@ elseif("${MCU_MFPU_TYPE}" STREQUAL "sp")
     set(VFP_FLAGS "-mfpu=fpv4-sp-d16 -mfloat-abi=hard")
 else()
     set(VFP_FLAGS "-mfpu=fpv4-sp-d16 -mfloat-abi=softfp")
-    message(STATUS "Use default vfp params: ${VFP_FLAGS}")
 endif()
+
+message(STATUS "MCU VFP Mode: ${VFP_FLAGS}")
 
 set(MCPU_FLAGS "-mthumb -mcpu=cortex-m4")
 set(SPEC_FLAGS "--specs=nano.specs --specs=nosys.specs")

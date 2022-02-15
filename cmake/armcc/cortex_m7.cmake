@@ -10,7 +10,8 @@ elseif("${MCU_MFPU_TYPE}" STREQUAL "dp")
     set(MCPU_FLAGS "--cpu Cortex-M7.fp.dp")
 else()
     set(MCPU_FLAGS "--cpu Cortex-M7.fp.dp")
-    message(STATUS "Use default vfp params: ${MCPU_FLAGS}")
 endif()
+
+message(STATUS "MCU VFP Mode: ${MCPU_FLAGS}")
 
 include(${CMAKE_CURRENT_LIST_DIR}/toolchain.cmake)

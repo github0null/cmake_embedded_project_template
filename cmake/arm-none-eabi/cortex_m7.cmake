@@ -10,8 +10,9 @@ elseif("${MCU_MFPU_TYPE}" STREQUAL "dp")
     set(VFP_FLAGS "-mfpu=fpv5-d16 -mfloat-abi=hard")
 else()
     set(VFP_FLAGS "-mfpu=fpv5-d16 -mfloat-abi=softfp")
-    message(STATUS "Use default vfp params: ${VFP_FLAGS}")
 endif()
+
+message(STATUS "MCU VFP Mode: ${VFP_FLAGS}")
 
 set(MCPU_FLAGS "-mthumb -mcpu=cortex-m7")
 set(SPEC_FLAGS "--specs=nano.specs --specs=nosys.specs")
