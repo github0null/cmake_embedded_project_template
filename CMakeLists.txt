@@ -4,7 +4,6 @@ cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 set(COMPILER_TYPE "arm-none-eabi") # options: 'armcc' or 'arm-none-eabi'
 set(MCU_ARCH_TYPE "cortex_m7") # options: 'cortex_m0', 'cortex_m3' ...
 set(MCU_MFPU_TYPE "default") # options: 'sp', 'dp', 'none', 'default'
-#set(TOOLCHAIN_DIR "D:/Keil/ARM/ARMCC/bin") # toolchain root folder for armcc
 
 # Include toolchain config
 include(${CMAKE_SOURCE_DIR}/cmake/${COMPILER_TYPE}/${MCU_ARCH_TYPE}.cmake)
