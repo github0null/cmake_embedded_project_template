@@ -37,8 +37,8 @@ SET(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "asm release compiler flags")
 function(output_binary_files target_name)    
     add_custom_command(TARGET "${target_name}" POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E echo "output hex, bin ..."
-        COMMAND ${OBJCOPY} -O ihex   "${target_name}" "${target_name}.hex"
-        COMMAND ${OBJCOPY} -O binary "${target_name}" "${target_name}.bin"
+        COMMAND ${CMAKE_OBJCOPY} -O ihex   "${target_name}" "${target_name}.hex"
+        COMMAND ${CMAKE_OBJCOPY} -O binary "${target_name}" "${target_name}.bin"
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         VERBATIM)
 endfunction()
