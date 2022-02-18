@@ -60,12 +60,12 @@ SET(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "asm release compiler flags")
 #
 # some utility functions
 #
-function(output_binary_files target_name)    
+function(output_binary_files target_name)
     add_custom_command(TARGET "${target_name}" POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E echo "output hex, s19, bin ..."
         COMMAND ${CMAKE_OBJCOPY} --i32combined --output "${target_name}.hex" "${target_name}.elf"
         COMMAND ${CMAKE_OBJCOPY} --m32combined --output "${target_name}.s19" "${target_name}.elf"
         COMMAND ${CMAKE_OBJCOPY} --bincombined --output "${target_name}.bin" "${target_name}.elf"
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
         VERBATIM)
 endfunction()
