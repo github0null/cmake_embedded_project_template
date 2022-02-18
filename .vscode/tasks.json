@@ -19,6 +19,25 @@
             ]
         },
         {
+            "label": "Flash",
+            "type": "shell",
+            "group": "build",
+            "windows": {
+                "command": ".\\build\\flash.bat",
+                "options": {
+                    "shell": {
+                        "executable": "cmd.exe",
+                        "args": [
+                            "/C"
+                        ]
+                    }
+                }
+            },
+            "linux": {
+                "command": "./build/flash.sh"
+            }
+        },
+        {
             "label": "Clean",
             "type": "shell",
             "windows": {
