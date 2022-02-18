@@ -15,6 +15,11 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
+set(CMAKE_EXECUTABLE_SUFFIX     .elf)
+set(CMAKE_EXECUTABLE_SUFFIX_C   .elf)
+set(CMAKE_EXECUTABLE_SUFFIX_CXX .elf)
+set(CMAKE_EXECUTABLE_SUFFIX_ASM .elf)
+
 # this makes the test compiles use static library option so that we don't need to pre-set linker flags and scripts
 #set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
@@ -27,8 +32,8 @@ SET(CMAKE_C_FLAGS_DEBUG "-Og -g -ggdb3" CACHE INTERNAL "c debug compiler flags")
 SET(CMAKE_CXX_FLAGS_DEBUG "-Og -g -ggdb3" CACHE INTERNAL "cxx debug compiler flags")
 SET(CMAKE_ASM_FLAGS_DEBUG "-g -ggdb3" CACHE INTERNAL "asm debug compiler flags")
 
-SET(CMAKE_C_FLAGS_RELEASE "-O2" CACHE INTERNAL "c release compiler flags")
-SET(CMAKE_CXX_FLAGS_RELEASE "-O2" CACHE INTERNAL "cxx release compiler flags")
+SET(CMAKE_C_FLAGS_RELEASE "-O3" CACHE INTERNAL "c release compiler flags")
+SET(CMAKE_CXX_FLAGS_RELEASE "-O3" CACHE INTERNAL "cxx release compiler flags")
 SET(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "asm release compiler flags")
 
 #
@@ -37,8 +42,8 @@ SET(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "asm release compiler flags")
 function(output_binary_files target_name)
     add_custom_command(TARGET "${target_name}" POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E echo "output hex, bin ..."
-        COMMAND ${CMAKE_OBJCOPY} -O ihex   "${target_name}" "${target_name}.hex"
-        COMMAND ${CMAKE_OBJCOPY} -O binary "${target_name}" "${target_name}.bin"
+        COMMAND ${CMAKE_OBJCOPY} -O ihex   "${target_name}.elf" "${target_name}.hex"
+        COMMAND ${CMAKE_OBJCOPY} -O binary "${target_name}.elf" "${target_name}.bin"
         WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
         VERBATIM)
 endfunction()

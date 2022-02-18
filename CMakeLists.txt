@@ -6,7 +6,7 @@ set(MCU_ARCH_TYPE "cortex_m7") # options: 'cortex_m0', 'cortex_m3' ...
 set(MCU_MFPU_TYPE "default") # options: 'sp', 'dp', 'none', 'default'
 
 # Include toolchain config
-include(${CMAKE_SOURCE_DIR}/cmake/${COMPILER_TYPE}/${MCU_ARCH_TYPE}.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/toolchain/${COMPILER_TYPE}/${MCU_ARCH_TYPE}.cmake)
 
 # Set up project name
 set(PRJ_NAME "cmake_project_demo")

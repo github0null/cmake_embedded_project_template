@@ -34,6 +34,11 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
+set(CMAKE_EXECUTABLE_SUFFIX     .axf)
+set(CMAKE_EXECUTABLE_SUFFIX_C   .axf)
+set(CMAKE_EXECUTABLE_SUFFIX_CXX .axf)
+set(CMAKE_EXECUTABLE_SUFFIX_ASM .axf)
+
 # this makes the test compiles use static library option so that we don't need to pre-set linker flags and scripts
 #set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
@@ -63,9 +68,9 @@ SET(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "asm release compiler flags")
 function(output_binary_files target_name)
     add_custom_command(TARGET "${target_name}" POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E echo "output hex, s19, bin ..."
-        COMMAND ${CMAKE_OBJCOPY} --i32combined --output "${target_name}.hex" "${target_name}.elf"
-        COMMAND ${CMAKE_OBJCOPY} --m32combined --output "${target_name}.s19" "${target_name}.elf"
-        COMMAND ${CMAKE_OBJCOPY} --bincombined --output "${target_name}.bin" "${target_name}.elf"
+        COMMAND ${CMAKE_OBJCOPY} --i32combined --output "${target_name}.hex" "${target_name}.axf"
+        COMMAND ${CMAKE_OBJCOPY} --m32combined --output "${target_name}.s19" "${target_name}.axf"
+        COMMAND ${CMAKE_OBJCOPY} --bincombined --output "${target_name}.bin" "${target_name}.axf"
         WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
         VERBATIM)
 endfunction()
