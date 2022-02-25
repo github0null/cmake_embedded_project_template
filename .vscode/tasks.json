@@ -1,17 +1,15 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
             "label": "config",
             "type": "shell",
-            "command": "cmake -B ./build -G Ninja"
+            "command": "cmake -B ${config:cmake.buildDirectory} -G \\\"${config:cmake.generator}\\\""
         },
         {
             "label": "Build",
             "type": "shell",
-            "command": "cmake --build ./build --target all -j 14",
+            "command": "cmake --build ${config:cmake.buildDirectory} --target all -j 14",
             "group": "build",
             "problemMatcher": "$gcc",
             "dependsOn": [
@@ -23,7 +21,7 @@
             "type": "shell",
             "group": "build",
             "windows": {
-                "command": ".\\build\\flash.bat",
+                "command": "${config:cmake.buildDirectory}\\flash.bat",
                 "options": {
                     "shell": {
                         "executable": "cmd.exe",
@@ -34,17 +32,17 @@
                 }
             },
             "linux": {
-                "command": "./build/flash.sh"
+                "command": "${config:cmake.buildDirectory}/flash.sh"
             }
         },
         {
             "label": "Clean",
             "type": "shell",
             "windows": {
-                "command": "rm ./build -Force -Recurse -Verbose",
+                "command": "rm ${config:cmake.buildDirectory}/* -Force -Recurse -Verbose",
             },
             "linux": {
-                "command": "rm -rf -v ./build"
+                "command": "rm -rf -v ${config:cmake.buildDirectory}/*"
             },
             "group": "build",
             "problemMatcher": "$gcc"
